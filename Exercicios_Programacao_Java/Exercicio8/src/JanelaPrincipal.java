@@ -20,6 +20,17 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 	private JLabel labelStatus;
 	private String titulo;
 
+	private static final long serialVersionUID = 1L;
+	private JMenuBar menuBar;
+	private JMenu menuArquivo;
+	private JMenu menuAjuda;
+	private JMenuItem menuSobreSair;
+	private JMenuItem menuItemVermelho;
+	private JMenuItem menuItemVerde;
+	private JMenuItem menuItemAzul;
+	private JMenuItem menuItemAjuda;
+	private JMenuItem menuItemSobre;
+
 	JanelaPrincipal(String titulo) throws HeadlessException {
 		super(titulo);
 		this.titulo = titulo;
@@ -140,6 +151,10 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent evento) {
 		JOptionPane.showMessageDialog(this, evento.getActionCommand(), "Ação Solicitada",
 				JOptionPane.INFORMATION_MESSAGE);
+
+		if (evento.getSource() == menuSobreSair) {
+			System.exit(NORMAL);
+		}
 
 	}
 }
