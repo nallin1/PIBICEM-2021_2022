@@ -23,13 +23,14 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JMenuBar menuBar;
 	private JMenu menuArquivo;
-	private JMenu menuAjuda;
-	private JMenuItem menuSobreSair;
+	private JMenu menuSobre;
+	private JMenuItem menuSobreAjuda;
+	private JMenuItem menuSobreCreditos;
+	private JMenuItem menuArquivoSair;
 	private JMenuItem menuArquivoBranco;
 	private JMenuItem menuArquivoCinzaClaro;
 	private JMenuItem menuArquivoCinzaEscuro;
 	private JMenuItem menuArquivoPreto;
-	
 
 	JanelaPrincipal(String titulo) throws HeadlessException {
 		super(titulo);
@@ -65,36 +66,36 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 	}
 
 	private void criaAdicionaMenu() {
-		JMenu menuArquivo = new JMenu("Arquivo");
+		menuArquivo = new JMenu("Arquivo");
 		menuArquivo.setMnemonic('A');
 
-		JMenuItem menuArquivoBranco = new JMenuItem("Branco");
+		menuArquivoBranco = new JMenuItem("Branco");
 		menuArquivo.add(menuArquivoBranco);
 
-		JMenuItem menuArquivoCinzaClaro = new JMenuItem("Cinza Claro");
+		menuArquivoCinzaClaro = new JMenuItem("Cinza Claro");
 		menuArquivo.add(menuArquivoCinzaClaro);
 
-		JMenuItem menuArquivoCinzaEscuro = new JMenuItem("Cinza Escuro");
+		menuArquivoCinzaEscuro = new JMenuItem("Cinza Escuro");
 		menuArquivo.add(menuArquivoCinzaEscuro);
 
-		JMenuItem menuArquivoPreto = new JMenuItem("Preto");
+		menuArquivoPreto = new JMenuItem("Preto");
 		menuArquivo.add(menuArquivoPreto);
 
 		menuArquivo.addSeparator();
 
-		JMenu menuSobre = new JMenu("Sobre");
+		menuArquivoSair = new JMenuItem("Sair");
+		menuArquivo.add(menuArquivoSair);
+
+		menuSobre = new JMenu("Sobre");
 		menuSobre.setMnemonic('S');
 
-		JMenuItem menuSobreSair = new JMenuItem("Sair");
-		menuSobre.add(menuSobreSair);
-
-		JMenuItem menuSobreAjuda = new JMenuItem("Ajuda");
+		menuSobreAjuda = new JMenuItem("Ajuda");
 		menuSobre.add(menuSobreAjuda);
 
-		JMenuItem menuSobreCreditos = new JMenuItem("Autor");
+		menuSobreCreditos = new JMenuItem("Autor");
 		menuSobre.add(menuSobreCreditos);
 
-		JMenuBar menuBar = new JMenuBar();
+		menuBar = new JMenuBar();
 		menuBar.add(menuArquivo);
 		menuBar.add(menuSobre);
 
@@ -152,15 +153,21 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 		JOptionPane.showMessageDialog(this, evento.getActionCommand(), "Ação Solicitada",
 				JOptionPane.INFORMATION_MESSAGE);
 
-		if (evento.getSource() == menuSobreSair) {
+		if (evento.getSource() == menuArquivoSair) {
 			System.exit(NORMAL);
 		}
 		if (evento.getSource() == menuArquivoBranco) {
-			this.painelStatus.setBackground(Color.white);
+			this.getContentPane().setBackground(Color.white);
 		}
 		if (evento.getSource() == menuArquivoPreto) {
-			this.painelStatus.setBackground(Color.black);
+			this.getContentPane().setBackground(Color.black);
 		}
-
+		if (evento.getSource() == menuArquivoCinzaClaro) {
+			this.getContentPane().setBackground(Color.lightGray);
+		}
+		if (evento.getSource() == menuArquivoCinzaEscuro) {
+			this.getContentPane().setBackground(Color.darkGray);
+		}
+		this.repaint();
 	}
 }
