@@ -25,11 +25,11 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 	private JMenu menuArquivo;
 	private JMenu menuAjuda;
 	private JMenuItem menuSobreSair;
-	private JMenuItem menuItemVermelho;
-	private JMenuItem menuItemVerde;
-	private JMenuItem menuItemAzul;
-	private JMenuItem menuItemAjuda;
-	private JMenuItem menuItemSobre;
+	private JMenuItem menuArquivoBranco;
+	private JMenuItem menuArquivoCinzaClaro;
+	private JMenuItem menuArquivoCinzaEscuro;
+	private JMenuItem menuArquivoPreto;
+	
 
 	JanelaPrincipal(String titulo) throws HeadlessException {
 		super(titulo);
@@ -154,6 +154,12 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 
 		if (evento.getSource() == menuSobreSair) {
 			System.exit(NORMAL);
+		}
+		if (evento.getSource() == menuArquivoBranco) {
+			this.painelStatus.setBackground(Color.white);
+		}
+		if (evento.getSource() == menuArquivoPreto) {
+			this.painelStatus.setBackground(Color.black);
 		}
 
 	}
